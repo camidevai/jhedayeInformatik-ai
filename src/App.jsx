@@ -11,34 +11,33 @@ import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 
 export default function App() {
-  const videoRef  = useRef(null)
-  const rafRef    = useRef(null)
+  const videoRef        = useRef(null)
+  const heroWrapRef     = useRef(null)
+  const rafRef          = useRef(null)
   const [videoReady, setVideoReady] = useState(false)
   const [scrollPct, setScrollPct]   = useState(0)
 
-  // Video scrub — avanza con el scroll de la página
+  // Video scrub — mapea solo al hero section, así avanza visible y rápido
   useEffect(() => {
     const video = videoRef.current
     if (!video || !videoReady) return
 
-    // Asegurarse de que el video esté pausado y en el frame 0
     video.pause()
     video.currentTime = 0
 
     const onScroll = () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       rafRef.current = requestAnimationFrame(() => {
+        const heroH = heroWrapRef.current?.offsetHeight ?? window.innerHeight
+        const videoP = Math.min(1, window.scrollY / heroH)
+        video.currentTime = videoP * video.duration
+
         const max = document.documentElement.scrollHeight - window.innerHeight
-        if (max <= 0) return
-        const p = Math.min(1, window.scrollY / max)
-        video.currentTime = p * video.duration
-        setScrollPct(p * 100)
+        setScrollPct(max > 0 ? (window.scrollY / max) * 100 : 0)
       })
     }
 
-    // Disparar una vez al montar para reflejar el scroll actual
     onScroll()
-
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', onScroll)
@@ -76,24 +75,15 @@ export default function App() {
 
       <Navbar />
 
-      {/* ── Split layout ─────────────────────────────────────────────────── */}
-      <div className="flex">
+      {/* ── Hero split — solo aquí ───────────────────────────────────────── */}
+      <div className="flex" ref={heroWrapRef}>
 
-        {/* LEFT — contenido con fondo sólido */}
+        {/* LEFT — hero con fondo sólido */}
         <div className="w-full lg:w-[57%] bg-[#020D1A] relative z-10 border-r border-white/[0.03]">
-          <main>
-            <Hero />
-            <ValueStrip />
-            <Services />
-            <Process />
-            <StorySection />
-            <Credibility />
-            <MeetingSelector />
-            <FinalCTA />
-          </main>
+          <Hero />
         </div>
 
-        {/* RIGHT — video sticky, siempre visible */}
+        {/* RIGHT — video sticky, solo existe durante el hero */}
         <div
           className="hidden lg:block lg:w-[43%] sticky top-0 h-screen overflow-hidden"
           aria-hidden="true"
@@ -111,7 +101,7 @@ export default function App() {
             onLoadedMetadata={(e) => { e.target.pause(); e.target.currentTime = 0 }}
             onCanPlayThrough={() => setVideoReady(true)}
           />
-          {/* Fade suave en el borde izquierdo — une visualmente con el panel de contenido */}
+          {/* Fade borde izquierdo */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -126,7 +116,17 @@ export default function App() {
 
       </div>
 
-      {/* Footer — full width fuera del split */}
+      {/* ── Secciones full-width — sin panel derecho ────────────────────── */}
+      <main>
+        <ValueStrip />
+        <Services />
+        <Process />
+        <StorySection />
+        <Credibility />
+        <MeetingSelector />
+        <FinalCTA />
+      </main>
+
       <Footer />
 
     </div>
