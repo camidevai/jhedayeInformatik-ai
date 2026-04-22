@@ -20,16 +20,25 @@ export default function App() {
   useEffect(() => {
     const video = videoRef.current
     if (!video || !videoReady) return
+
+    // Asegurarse de que el video esté pausado y en el frame 0
+    video.pause()
+    video.currentTime = 0
+
     const onScroll = () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       rafRef.current = requestAnimationFrame(() => {
         const max = document.documentElement.scrollHeight - window.innerHeight
         if (max <= 0) return
         const p = Math.min(1, window.scrollY / max)
-        video.currentTime = p * (video.duration || 24)
+        video.currentTime = p * video.duration
         setScrollPct(p * 100)
       })
     }
+
+    // Disparar una vez al montar para reflejar el scroll actual
+    onScroll()
+
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', onScroll)
@@ -99,6 +108,7 @@ export default function App() {
             muted
             playsInline
             preload="auto"
+            onLoadedMetadata={(e) => { e.target.pause(); e.target.currentTime = 0 }}
             onCanPlayThrough={() => setVideoReady(true)}
           />
           {/* Fade suave en el borde izquierdo — une visualmente con el panel de contenido */}
