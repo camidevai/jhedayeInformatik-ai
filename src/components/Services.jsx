@@ -203,40 +203,25 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="relative py-28 px-6 overflow-hidden"
-      style={{ background: '#020D1A' }}
+      className="relative overflow-hidden"
+      style={{ padding: `5rem clamp(32px,6vw,80px)`, borderTop: '1px solid rgba(0,151,210,0.08)' }}
     >
-      {/* Glow ambiental de fondo */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
-        style={{
-          background:  'radial-gradient(ellipse, rgba(0,151,210,0.06) 0%, transparent 70%)',
-          filter:      'blur(40px)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 anim-hidden">
-          <div>
-            <span className="text-[#FF5F00] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
-              Capacidades
-            </span>
-            <h2 className="font-['Syne'] font-bold text-white leading-tight"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>
-              Lo que construimos
-            </h2>
-          </div>
-          <p className="text-[#D0CFCD]/50 text-sm leading-relaxed max-w-sm md:text-right">
-            Cinco capacidades técnicas que cubren<br className="hidden md:block" />
-            todo el ciclo de desarrollo con IA.
+        <div className="mb-12 anim-hidden">
+          <div className="section-label">Capacidades</div>
+          <h2 className="font-['Syne'] font-bold text-white leading-tight"
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}>
+            Lo que construimos
+          </h2>
+          <p className="text-[#D0CFCD]/40 text-sm leading-relaxed mt-3 max-w-xs">
+            Cinco capacidades técnicas que cubren todo el ciclo de desarrollo con IA.
           </p>
         </div>
 
-        {/* Grid — 2 col en tablet, 3 en desktop con última centrada */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Grid — máximo 2 columnas en este layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {services.map((s, i) => (
             <ServiceCard
               key={s.title}
@@ -250,12 +235,13 @@ export default function Services() {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-14 flex items-center justify-center anim-hidden">
+        <div className="mt-12 anim-hidden">
           <div
-            className="flex items-center gap-4 px-6 py-4 rounded-2xl"
+            className="flex items-center gap-4 px-5 py-3.5 rounded-2xl w-fit"
             style={{
               background: 'rgba(0,151,210,0.05)',
               border:     '1px solid rgba(0,151,210,0.12)',
+              backdropFilter: 'blur(8px)',
             }}
           >
             <div className="w-2 h-2 rounded-full bg-[#FF5F00] animate-pulse flex-shrink-0" />
@@ -266,7 +252,7 @@ export default function Services() {
                 onClick={(e) => { e.preventDefault(); document.querySelector('#agenda')?.scrollIntoView({ behavior: 'smooth' }) }}
                 className="text-[#0097D2] hover:text-white transition-colors font-medium underline-offset-4 hover:underline"
               >
-                Hablemos de tu caso puntual
+                Hablemos de tu caso
               </a>
             </p>
           </div>

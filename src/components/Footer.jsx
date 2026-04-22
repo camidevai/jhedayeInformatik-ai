@@ -37,8 +37,12 @@ function NavLink({ href, children }) {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#0097D2]/10 py-16 px-6" role="contentinfo">
-      <div className="max-w-7xl mx-auto">
+    <footer
+      className="border-t border-[#0097D2]/10"
+      role="contentinfo"
+      style={{ background: '#020D1A', padding: '4rem clamp(32px,5vw,80px)' }}
+    >
+      <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">

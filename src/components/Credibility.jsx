@@ -38,30 +38,21 @@ export default function Credibility() {
   return (
     <section
       id="nosotros"
-      className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg,#020D1A 0%,rgba(0,55,100,0.1) 50%,#020D1A 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: `5rem clamp(32px,6vw,80px)`, borderTop: '1px solid rgba(0,151,210,0.08)' }}
     >
-      {/* Glow */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse,rgba(0,151,210,0.06),transparent 70%)', filter: 'blur(40px)' }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-20 anim-hidden">
-          <span className="text-[#FF5F00] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
-            Por qué elegirnos
-          </span>
-          <h2 className="font-['Syne'] font-bold text-white" style={{ fontSize: 'clamp(2rem,4vw,3rem)' }}>
+        <div className="mb-12 anim-hidden">
+          <div className="section-label">Por qué elegirnos</div>
+          <h2 className="font-['Syne'] font-bold text-white" style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', letterSpacing:'-0.02em' }}>
             La alianza que construye
           </h2>
         </div>
 
         {/* 3 pilares visuales */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-14">
           {pillars.map((p, i) => (
             <div
               key={p.label}

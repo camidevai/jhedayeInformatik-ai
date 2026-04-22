@@ -104,13 +104,16 @@ export default function StorySection() {
   const Visual = panels[active].visual
 
   return (
-    <section className="py-28 px-6 overflow-hidden" style={{ background: '#020D1A' }}>
-      <div className="max-w-7xl mx-auto">
+    <section
+      className="overflow-hidden"
+      style={{ padding: `5rem clamp(32px,6vw,80px)`, borderTop: '1px solid rgba(0,151,210,0.08)' }}
+    >
+      <div>
 
         {/* Header */}
-        <div className="text-center mb-16 anim-hidden">
-          <span className="text-[#FF5F00] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">El proceso real</span>
-          <h2 className="font-['Syne'] font-bold text-white" style={{ fontSize: 'clamp(2rem,4vw,3rem)' }}>
+        <div className="mb-12 anim-hidden">
+          <div className="section-label">El proceso real</div>
+          <h2 className="font-['Syne'] font-bold text-white" style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', letterSpacing:'-0.02em' }}>
             De la idea al producto
           </h2>
         </div>

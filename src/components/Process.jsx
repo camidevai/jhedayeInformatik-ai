@@ -50,19 +50,17 @@ export default function Process() {
   return (
     <section
       id="proceso"
-      className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg,#020D1A 0%,rgba(0,55,100,0.08) 50%,#020D1A 100%)' }}
+      className="relative overflow-hidden"
+      style={{ padding: `5rem clamp(32px,6vw,80px)`, borderTop: '1px solid rgba(0,151,210,0.08)' }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div>
 
         {/* Header */}
-        <div className="text-center mb-20 anim-hidden">
-          <span className="text-[#FF5F00] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
-            Metodología
-          </span>
+        <div className="mb-14 anim-hidden">
+          <div className="section-label">Metodología</div>
           <h2
             className="font-['Syne'] font-bold text-white"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
           >
             Cómo trabajamos
           </h2>
@@ -71,23 +69,19 @@ export default function Process() {
         {/* Timeline */}
         <div className="relative">
 
-          {/* Línea conectora (desktop) */}
-          <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-px" aria-hidden="true">
-            <div
-              className="h-full process-line opacity-25"
-              style={{ background: 'linear-gradient(to right,#0097D2,#FF5F00,#0097D2)' }}
-            />
-            {/* Puntos en la línea */}
+          {/* Línea conectora */}
+          <div className="hidden lg:block absolute top-[52px] left-[4%] right-[4%] h-px" aria-hidden="true">
+            <div className="h-full process-line opacity-20" />
             {steps.map((_, i) => (
               <div
                 key={i}
-                className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#0097D2]/60"
+                className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#0097D2]/50"
                 style={{ left: `${i * 25}%` }}
               />
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-3">
             {steps.map((step, i) => (
               <div
                 key={step.number}

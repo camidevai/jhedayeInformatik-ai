@@ -66,15 +66,9 @@ export default function MeetingSelector() {
   return (
     <section
       id="agenda"
-      className="relative py-28 px-6 overflow-hidden"
-      style={{ background: '#020D1A' }}
+      className="relative overflow-hidden"
+      style={{ padding: `5rem clamp(32px,6vw,80px)`, borderTop: '1px solid rgba(0,151,210,0.08)' }}
     >
-      {/* Glow ambiental */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%,rgba(0,55,100,0.18),transparent)' }}
-        aria-hidden="true"
-      />
 
       {/* Loading overlay */}
       {loading && (
@@ -86,26 +80,24 @@ export default function MeetingSelector() {
         </div>
       )}
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-14 anim-hidden">
-          <span className="text-[#FF5F00] text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
-            Primer paso
-          </span>
+        <div className="mb-10 anim-hidden">
+          <div className="section-label">Primer paso</div>
           <h2
-            className="font-['Syne'] font-bold text-white mb-3"
-            style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)' }}
+            className="font-['Syne'] font-bold text-white mb-2"
+            style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', letterSpacing:'-0.02em' }}
           >
             ¿Qué estás buscando?
           </h2>
-          <p className="text-[#D0CFCD]/40 text-sm max-w-sm mx-auto">
+          <p className="text-[#D0CFCD]/40 text-sm">
             Elegí y llegás al calendario correcto.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Cards — apiladas en esta columna */}
+        <div className="grid grid-cols-1 gap-4">
           {options.map((opt, i) => {
             const isSelected = selected === opt.id
             return (
@@ -125,18 +117,19 @@ export default function MeetingSelector() {
                 aria-checked={isSelected}
                 tabIndex={0}
               >
-                {/* Barra top */}
+                {/* Barra izquierda de color */}
                 <div
-                  className="h-[2px] w-full transition-all duration-400"
-                  style={{ background: isSelected ? `linear-gradient(to right,${opt.color},transparent)` : 'transparent' }}
+                  className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl transition-all duration-400"
+                  style={{ background: isSelected ? `linear-gradient(to bottom,${opt.color},transparent)` : 'transparent' }}
                   aria-hidden="true"
                 />
 
-                <div className="p-8 flex flex-col gap-6">
+                {/* Layout horizontal: icono | info | CTA */}
+                <div className="flex items-center gap-5 p-5 pl-6">
 
                   {/* Icono */}
                   <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300"
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
                     style={{
                       background: isSelected ? `${opt.color}20` : 'rgba(0,151,210,0.08)',
                       border:     `1px solid ${isSelected ? opt.color + '35' : 'rgba(0,151,210,0.12)'}`,
@@ -146,32 +139,33 @@ export default function MeetingSelector() {
                     {opt.icon}
                   </div>
 
-                  {/* Label */}
-                  <div>
-                    <h3 className="font-['Syne'] font-bold text-2xl text-white mb-2">{opt.label}</h3>
-                    <p className="text-[#D0CFCD]/50 text-sm leading-relaxed">{opt.sub}</p>
-                  </div>
-
-                  {/* Note */}
-                  <div
-                    className="text-[10px] font-semibold tracking-[0.15em] uppercase flex items-center gap-1.5"
-                    style={{ color: isSelected ? opt.color : 'rgba(208,207,205,0.25)' }}
-                  >
-                    <svg viewBox="0 0 8 8" className="w-2 h-2" fill="currentColor">
-                      <circle cx="4" cy="4" r="4" />
-                    </svg>
-                    {opt.note}
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h3 className="font-['Syne'] font-bold text-white text-base">{opt.label}</h3>
+                      <span
+                        className="text-[9px] font-bold tracking-[0.15em] uppercase px-2 py-0.5 rounded-full"
+                        style={{
+                          background: `${opt.color}15`,
+                          color:      isSelected ? opt.color : 'rgba(208,207,205,0.35)',
+                          border:     `1px solid ${isSelected ? opt.color + '30' : 'transparent'}`,
+                        }}
+                      >
+                        {opt.note}
+                      </span>
+                    </div>
+                    <p className="text-[#D0CFCD]/45 text-xs leading-relaxed">{opt.sub}</p>
                   </div>
 
                   {/* CTA */}
                   <button
                     onClick={(e) => handleBook(opt, e)}
-                    className="w-full py-3 rounded-xl text-sm font-semibold transition-all duration-250 hover:-translate-y-0.5"
+                    className="flex-shrink-0 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-250 hover:-translate-y-0.5 whitespace-nowrap"
                     style={{
                       background:  isSelected ? opt.color : 'rgba(0,151,210,0.08)',
                       color:        isSelected ? '#fff' : 'rgba(0,151,210,0.6)',
                       border:      `1px solid ${isSelected ? opt.color : 'rgba(0,151,210,0.15)'}`,
-                      boxShadow:   isSelected ? `0 8px 25px ${opt.color}35` : 'none',
+                      boxShadow:   isSelected ? `0 6px 20px ${opt.color}30` : 'none',
                     }}
                   >
                     {opt.cta} →
