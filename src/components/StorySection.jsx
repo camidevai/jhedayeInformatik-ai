@@ -145,7 +145,7 @@ export default function StorySection() {
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <div>
-                  <span className="text-[#D0CFCD]/35 text-[10px] tracking-[0.2em] uppercase block mb-0.5">{p.label}</span>
+                  <span className="text-[#D0CFCD]/55 text-[10px] tracking-[0.2em] uppercase block mb-0.5">{p.label}</span>
                   <h3 className="font-['Syne'] font-bold text-white text-base">{p.title}</h3>
                 </div>
               </div>

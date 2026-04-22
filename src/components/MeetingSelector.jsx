@@ -91,7 +91,7 @@ export default function MeetingSelector() {
           >
             ¿Qué estás buscando?
           </h2>
-          <p className="text-[#D0CFCD]/40 text-sm">
+          <p className="text-[#D0CFCD]/65 text-sm">
             Elegí y llegás al calendario correcto.
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function MeetingSelector() {
                         {opt.note}
                       </span>
                     </div>
-                    <p className="text-[#D0CFCD]/45 text-xs leading-relaxed">{opt.sub}</p>
+                    <p className="text-[#D0CFCD]/65 text-xs leading-relaxed">{opt.sub}</p>
                   </div>
 
                   {/* CTA */}
@@ -162,10 +162,10 @@ export default function MeetingSelector() {
                     onClick={(e) => handleBook(opt, e)}
                     className="flex-shrink-0 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-250 hover:-translate-y-0.5 whitespace-nowrap"
                     style={{
-                      background:  isSelected ? opt.color : 'rgba(0,151,210,0.08)',
-                      color:        isSelected ? '#fff' : 'rgba(0,151,210,0.6)',
-                      border:      `1px solid ${isSelected ? opt.color : 'rgba(0,151,210,0.15)'}`,
-                      boxShadow:   isSelected ? `0 6px 20px ${opt.color}30` : 'none',
+                      background:  (isSelected || opt.id === 'alianza') ? opt.color : 'rgba(0,151,210,0.08)',
+                      color:        (isSelected || opt.id === 'alianza') ? '#fff' : 'rgba(0,151,210,0.6)',
+                      border:      `1px solid ${(isSelected || opt.id === 'alianza') ? opt.color : 'rgba(0,151,210,0.15)'}`,
+                      boxShadow:   (isSelected || opt.id === 'alianza') ? `0 6px 20px ${opt.color}30` : 'none',
                     }}
                   >
                     {opt.cta} →

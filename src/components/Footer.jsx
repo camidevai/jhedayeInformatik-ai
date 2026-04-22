@@ -28,7 +28,7 @@ function NavLink({ href, children }) {
     <a
       href={href}
       onClick={handleClick}
-      className="text-[#D0CFCD]/45 hover:text-[#0097D2] text-sm transition-colors duration-200"
+      className="text-[#D0CFCD]/65 hover:text-[#0097D2] text-sm transition-colors duration-200"
     >
       {children}
     </a>
@@ -51,38 +51,9 @@ export default function Footer() {
               <span className="text-[#D0CFCD]/30 mx-2 font-light">×</span>
               Informatik<span className="text-[#0097D2]">-AI</span>
             </div>
-            <p className="text-[#D0CFCD]/45 text-sm leading-relaxed max-w-xs">
+            <p className="text-[#D0CFCD]/65 text-sm leading-relaxed max-w-xs">
               Alianza estratégica para el desarrollo de soluciones tecnológicas con inteligencia artificial aplicada.
             </p>
-            {/* Social */}
-            <div className="flex gap-3 mt-6">
-              {[
-                {
-                  label: 'LinkedIn',
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                      <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                    </svg>
-                  ),
-                },
-                {
-                  label: 'Twitter / X',
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  ),
-                },
-              ].map((s) => (
-                <button
-                  key={s.label}
-                  className="w-9 h-9 rounded-full glass border border-[#0097D2]/15 flex items-center justify-center text-[#D0CFCD]/40 hover:text-[#0097D2] hover:border-[#0097D2]/40 transition-all duration-200"
-                  aria-label={s.label}
-                >
-                  {s.icon}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
@@ -102,10 +73,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[#0097D2]/8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#D0CFCD]/30 text-xs">
+          <p className="text-[#D0CFCD]/50 text-xs">
             © 2025 JhedAi × Informatik-AI. Todos los derechos reservados.
           </p>
-          <p className="text-[#D0CFCD]/20 text-xs">
+          <p className="text-[#D0CFCD]/40 text-xs">
             Diseñado y desarrollado por la propia alianza.
           </p>
         </div>

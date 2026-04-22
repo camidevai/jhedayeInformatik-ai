@@ -64,6 +64,9 @@ export default function Process() {
           >
             Cómo trabajamos
           </h2>
+          <p className="text-[#D0CFCD]/65 text-sm leading-relaxed mt-3 max-w-sm">
+            Cada etapa incluye revisión de seguridad. Entregamos código auditable y estructura mantenible — no solo funcional. La respuesta directa al riesgo del vibe coding.
+          </p>
         </div>
 
         {/* Timeline */}

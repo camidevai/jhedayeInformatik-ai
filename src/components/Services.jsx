@@ -27,8 +27,8 @@ const services = [
     title: 'Agentes IA',
     tagline: 'Procesos que se ejecutan solos',
     description:
-      'Agentes autónomos que toman decisiones, procesan datos y activan flujos complejos sin intervención humana constante.',
-    benefit: 'Reducís costos operativos y escalás sin contratar.',
+      'Agentes autónomos que toman decisiones, procesan datos y activan flujos complejos. Se conectan con tus plataformas de gestión, bases de datos y canales de comunicación — desde WhatsApp e Instagram hasta ERP o CRM.',
+    benefit: 'Reducís costos operativos y escalás sin contratar. Tus herramientas actuales siguen funcionando.',
     color: '#FF5F00',
   },
   {
@@ -165,7 +165,7 @@ function ServiceCard({ s, i, active, onEnter, onLeave }) {
         {/* Descripción — visible siempre pero más visible en hover */}
         <p
           className="text-sm leading-relaxed flex-1 transition-colors duration-300"
-          style={{ color: active ? 'rgba(208,207,205,0.75)' : 'rgba(208,207,205,0.4)' }}
+          style={{ color: active ? 'rgba(208,207,205,0.85)' : 'rgba(208,207,205,0.65)' }}
         >
           {s.description}
         </p>
@@ -178,7 +178,7 @@ function ServiceCard({ s, i, active, onEnter, onLeave }) {
             opacity:    active ? 1 : 0.4,
           }}
         >
-          <p className="text-xs flex items-center gap-2" style={{ color: 'rgba(208,207,205,0.5)' }}>
+          <p className="text-xs flex items-center gap-2" style={{ color: 'rgba(208,207,205,0.65)' }}>
             <span
               className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-300"
               style={{
@@ -215,7 +215,7 @@ export default function Services() {
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}>
             Lo que construimos
           </h2>
-          <p className="text-[#D0CFCD]/40 text-sm leading-relaxed mt-3 max-w-xs">
+          <p className="text-[#D0CFCD]/65 text-sm leading-relaxed mt-3 max-w-xs">
             Cinco capacidades técnicas que cubren todo el ciclo de desarrollo con IA.
           </p>
         </div>
@@ -245,7 +245,7 @@ export default function Services() {
             }}
           >
             <div className="w-2 h-2 rounded-full bg-[#FF5F00] animate-pulse flex-shrink-0" />
-            <p className="text-[#D0CFCD]/50 text-sm">
+            <p className="text-[#D0CFCD]/65 text-sm">
               ¿No encontrás lo que necesitás?{' '}
               <a
                 href="#agenda"

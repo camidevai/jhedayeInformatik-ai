@@ -94,7 +94,7 @@ export default function Credibility() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">{p.label}</div>
-                  <div className="text-[#D0CFCD]/40 text-xs mt-0.5">{p.sub}</div>
+                  <div className="text-[#D0CFCD]/65 text-xs mt-0.5">{p.sub}</div>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function Credibility() {
           </div>
           <div className="mt-4 flex items-center justify-center gap-3">
             <div className="h-px w-12 bg-[#0097D2]/30" />
-            <span className="text-[#D0CFCD]/35 text-xs tracking-widest uppercase">JhedAi × Informatik-AI</span>
+            <span className="text-[#D0CFCD]/55 text-xs tracking-widest uppercase">JhedAi × Informatik-AI</span>
             <div className="h-px w-12 bg-[#0097D2]/30" />
           </div>
         </blockquote>
